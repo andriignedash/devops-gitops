@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: XXXXXXXXXXXX.dkr.ecr.us-west-2.amazonaws.com/lesson-8-9-ecr
-  tag: "initial"
+  tag: "f82c8c5c"
   pullPolicy: IfNotPresent
 
 service:
