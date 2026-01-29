@@ -1,0 +1,33 @@
+replicaCount: 2
+
+image:
+  repository: XXXXXXXXXXXX.dkr.ecr.us-west-2.amazonaws.com/lesson-8-9-ecr
+  tag: "initial"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+env:
+  - name: DJANGO_SETTINGS_MODULE
+    value: config.settings
+  - name: DEBUG
+    value: "False"
+  - name: ALLOWED_HOSTS
+    value: "*"
